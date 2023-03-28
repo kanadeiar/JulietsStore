@@ -1,2 +1,3 @@
-# JulietsStore
-Juliet's Store - Магазин Джульетты
+# Juliet's Store
+
+Juliet's Store - Интернет - магазин Джульетты
