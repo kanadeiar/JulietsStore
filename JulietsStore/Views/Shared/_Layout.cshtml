@@ -7,11 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Магазин Джульетты</title>
+
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 <body>
-    <div>
-        @RenderBody()
+    <div class="bg-dark text-white p-2">
+        <span class="navbar-brand ml-2 my-3">Магазин Джультетты</span>
+    </div>
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            Это наполнить позже
+        </div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
     </div>
 </body>
 
