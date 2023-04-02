@@ -1,0 +1,1 @@
+global using JulietsStore.Domain.Models;
