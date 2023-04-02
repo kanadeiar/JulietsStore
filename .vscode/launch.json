@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": ".NET Core Launch (Web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            // Если изменится целевая версия фреймворка, то обновить путь к приложению.
+            "program": "${workspaceFolder}/JulietsStore/bin/Debug/net7.0/JulietsStore.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/JulietsStore",
+            "stopAtEntry": false,
+            // Включение запуска приложения ASP.NET Core в браузере автоматически. 
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
