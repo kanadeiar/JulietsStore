@@ -20,6 +20,10 @@
   <ItemGroup>
     <Using Include="Microsoft.AspNetCore.Mvc"/>
     <Using Include="Microsoft.EntityFrameworkCore" />
+    <Using Include="Microsoft.AspNetCore.Razor.TagHelpers" />
+    <Using Include="Microsoft.AspNetCore.Mvc.Routing" />
+    <Using Include="Microsoft.AspNetCore.Mvc.ViewFeatures" />
+    <Using Include="Microsoft.AspNetCore.Mvc.Rendering" />
   </ItemGroup>
 
 </Project>
