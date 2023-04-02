@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Using Include="System.ComponentModel.DataAnnotations.Schema" />
+  </ItemGroup>
+
 </Project>

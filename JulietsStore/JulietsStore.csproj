@@ -10,4 +10,8 @@
     <ProjectReference Include="..\JulietsStore.Infra\JulietsStore.Infra.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="Microsoft.AspNetCore.Mvc"/>
+  </ItemGroup>
+
 </Project>
