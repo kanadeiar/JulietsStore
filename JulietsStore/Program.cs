@@ -15,6 +15,8 @@ app.UseDeveloperExceptionPage();
 app.UseStatusCodePages();
 
 app.UseStaticFiles();
+
+app.UseRouting();
 app.MapDefaultControllerRoute();
 
 await SeedData.EnsurePopulated(app);
