@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JulietsStore.Infra.Migrations
 {
     [DbContext(typeof(JulietsStoreDbContext))]
-    [Migration("20230402172842_init")]
-    partial class init
+    [Migration("20230402201033_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
