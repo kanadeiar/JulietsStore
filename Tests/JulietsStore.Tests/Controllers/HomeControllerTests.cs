@@ -13,7 +13,7 @@ public class HomeControllerTests
         mock.Setup(x => x.Products).Returns(expecteds.AsQueryable<Product>());
         var controller = new HomeController(mock.Object);
 
-        var model = (controller.Index() as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
+        var model = (controller.Index(null) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
 
         var products = model.Products.ToArray();
         Assert.Equal(2, products.Length);
@@ -35,7 +35,7 @@ public class HomeControllerTests
         mock.Setup(x => x.Products).Returns(expecteds.AsQueryable<Product>());
         var controller = new HomeController(mock.Object);
 
-        var model = (controller.Index(2) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
+        var model = (controller.Index(null, 2) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
 
         var products = model.Products.ToArray();
         Assert.Equal(2, products.Length);
@@ -55,7 +55,7 @@ public class HomeControllerTests
         }).AsQueryable());
         var controller = new HomeController(mock.Object);
 
-        var model = (controller.Index(2) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
+        var model = (controller.Index(null, 2) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
 
         var pagingInfo = model.PagingInfo;
         Assert.Equal(2, pagingInfo.CurrentPage);
