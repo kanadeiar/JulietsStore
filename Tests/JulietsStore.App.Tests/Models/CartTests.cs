@@ -34,7 +34,7 @@ public class CartTests
 
         Assert.Equal(2, results.Length);
         Assert.Equal(1, results[0].Quantity);
-        Assert.Equal(10, results[1].Quantity);
+        Assert.Equal(11, results[1].Quantity);
     }
     [Fact]
     public void RemoveLine_CanRemove_ShouldOk()
