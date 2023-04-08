@@ -1,0 +1,45 @@
+@model CartViewModel
+
+<div>
+    <h4>Корзина</h4>
+    
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr><th>Товар</th><th class="text-right">Цена</th><th>Количество</th><th class="text-right">Сумма</th><th></th></tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Cart?.Lines!)
+            {
+                <tr>
+                    <td class="text-center">@line.Product?.Name</td>
+                    <td class="text-right">@line.Product?.Price.ToString("c")</td>
+                    <td class="text-center">@line.Quantity</td>
+                    <td class="text-right">
+                        @((line.Quantity * line.Product?.Price)?.ToString("c"))
+                    </td>
+                    <td class="text-center">
+                        <form asp-controller="Cart" asp-action="Remove" method="post">
+                            <input type="hidden" name="Id" value="@line?.Product?.Id" />
+                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                            <button type="submit" class="btn btn-sm btn-danger">
+                                Удалить
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-center">Итого:</td>
+                <td class="text-right">
+                    @Model.Cart?.TotalSum().ToString("c")
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить покупки</a>
+    </div>
+</div>

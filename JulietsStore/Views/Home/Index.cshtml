@@ -5,18 +5,25 @@
 </div>
 
 <div class="col-9">
-    <h4>Первая страница магазина</h4>
+    <div>
+        @foreach (var product in Model?.Products ?? Enumerable.Empty<Product>())
+        {
+            <partial name="Partial/ProductCardPartial" model="product" />
+        }
 
-    @foreach (var product in Model?.Products ?? Enumerable.Empty<Product>())
-    {
-        <partial name="Partial/ProductCardPartial" model="product" />
-    }
-
-    <div page-model="@Model?.PagingInfo" page-action="Index"
-        page-classes-enabled="true"
-        page-class="btn" page-class-normal="btn-outline-dark"
-        page-url-category="@Model?.CurrentCategory!"
-        page-class-selected="btn-primary" 
-        class="btn-group pull-right m-1">
+        @if (Model?.PagingInfo?.TotalPages > 1)
+        {
+            <div page-model="@Model?.PagingInfo" page-action="Index"
+                page-classes-enabled="true"
+                page-class="btn" page-class-normal="btn-outline-dark"
+                page-url-category="@Model?.CurrentCategory!"
+                page-class-selected="btn-primary" 
+                class="btn-group pull-right m-1">
+            </div>
+        }
     </div>
 </div>
+
+
+
+

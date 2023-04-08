@@ -24,6 +24,7 @@
     <Using Include="Microsoft.AspNetCore.Mvc.Routing" />
     <Using Include="Microsoft.AspNetCore.Mvc.ViewFeatures" />
     <Using Include="Microsoft.AspNetCore.Mvc.Rendering" />
+    <Using Include="System.Text.Json.Serialization" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="ru-ru">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Магазин Джульетты</title>
+
+    <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/lib/font-awesome/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="bg-dark text-white p-2">
+        <a class="navbar-brand col" asp-controller="Home" asp-action="Index">
+            <div class="col navbar-brand">Магазин Джульетты</div>
+        </a>
+    </div>
+    <div class="row m-1 p-1">
+        @RenderBody()
+    </div>
+</body>
+
+</html>
