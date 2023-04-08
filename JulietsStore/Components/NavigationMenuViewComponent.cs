@@ -3,6 +3,7 @@ namespace JulietsStore.Components;
 public class NavigationMenuViewComponent : ViewComponent
 {
     private readonly IProductsRepo _repo;
+    
     public NavigationMenuViewComponent(IProductsRepo repo)
     {
         _repo = repo;
