@@ -9,7 +9,7 @@ public class Cart : ICart
         var line = Lines.Where(x => x.Product?.Id == product.Id).FirstOrDefault();
         if (line is { })
         {
-            line.Quantity++;
+            line.Quantity += quantity;
         }
         else
         {

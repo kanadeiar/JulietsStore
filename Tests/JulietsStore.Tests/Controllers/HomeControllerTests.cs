@@ -9,9 +9,9 @@ public class HomeControllerTests
             new Product { Id = 1, Name = "Имя1" },
             new Product { Id = 2, Name = "Имя2" },
         };
-        var mock = new Mock<IProductsRepo>();
-        mock.Setup(x => x.Products).Returns(expecteds.AsQueryable<Product>());
-        var controller = new HomeController(mock.Object);
+        var mockRepo = new Mock<IProductsRepo>();
+        mockRepo.Setup(x => x.Products).Returns(expecteds.AsQueryable<Product>());
+        var controller = new HomeController(mockRepo.Object);
 
         var model = (controller.Index(null) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
 
@@ -31,9 +31,9 @@ public class HomeControllerTests
             new Product { Id = 5, Name = "Имя5" },
             new Product { Id = 6, Name = "Имя6" },
         };
-        var mock = new Mock<IProductsRepo>();
-        mock.Setup(x => x.Products).Returns(expecteds.AsQueryable<Product>());
-        var controller = new HomeController(mock.Object);
+        var mockRepo = new Mock<IProductsRepo>();
+        mockRepo.Setup(x => x.Products).Returns(expecteds.AsQueryable<Product>());
+        var controller = new HomeController(mockRepo.Object);
 
         var model = (controller.Index(null, 2) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
 
@@ -45,15 +45,15 @@ public class HomeControllerTests
     [Fact]
     public void Index_SendPaginationViewModel_ShouldOkModel()
     {
-        var mock = new Mock<IProductsRepo>();
-        mock.Setup(x => x.Products).Returns((new Product[] { 
+        var mockRepo = new Mock<IProductsRepo>();
+        mockRepo.Setup(x => x.Products).Returns((new Product[] { 
             new Product { Id = 1, Name = "Good1" },
             new Product { Id = 2, Name = "Good2" },
             new Product { Id = 3, Name = "Good3" },
             new Product { Id = 4, Name = "Good4" },
             new Product { Id = 5, Name = "Good5" },
         }).AsQueryable());
-        var controller = new HomeController(mock.Object);
+        var controller = new HomeController(mockRepo.Object);
 
         var model = (controller.Index(null, 2) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
 
@@ -66,15 +66,15 @@ public class HomeControllerTests
     [Fact]
     public void Index_CanFilterProducts_ShouldOkProducts()
     {
-        var mock = new Mock<IProductsRepo>();
-        mock.Setup(x => x.Products).Returns((new Product[]{
+        var mockRepo = new Mock<IProductsRepo>();
+        mockRepo.Setup(x => x.Products).Returns((new Product[]{
             new Product { Id = 1, Name = "Good1", Category = "Cat1" },
             new Product { Id = 2, Name = "Good2", Category = "Cat1" },
             new Product { Id = 3, Name = "Good3", Category = "Cat2" },
             new Product { Id = 4, Name = "Good4", Category = "Cat3" },
             new Product { Id = 5, Name = "Good5", Category = "Cat2" },
         }).AsQueryable());
-        var controller = new HomeController(mock.Object);
+        var controller = new HomeController(mockRepo.Object);
 
         var model = (controller.Index("Cat2", 1) as ViewResult)?.ViewData.Model as ProductsListViewModel ?? new();
         
@@ -87,15 +87,15 @@ public class HomeControllerTests
     [Fact]
     public void Index_GenerateCategoryProductsCount_ShouldOkCounts()
     {
-        var mock = new Mock<IProductsRepo>();
-        mock.Setup(x => x.Products).Returns((new Product[]{
+        var mockRepo = new Mock<IProductsRepo>();
+        mockRepo.Setup(x => x.Products).Returns((new Product[]{
             new Product { Id = 1, Name = "Good1", Category = "Cat1" },
             new Product { Id = 2, Name = "Good2", Category = "Cat1" },
             new Product { Id = 3, Name = "Good3", Category = "Cat2" },
             new Product { Id = 4, Name = "Good4", Category = "Cat3" },
             new Product { Id = 5, Name = "Good5", Category = "Cat2" },
         }).AsQueryable);
-        var controller = new HomeController(mock.Object);
+        var controller = new HomeController(mockRepo.Object);
         Func<IActionResult, ProductsListViewModel?> GetModel = x => (x as ViewResult)?.ViewData?.Model as ProductsListViewModel;
 
         var res1 = GetModel(controller.Index("Cat1", 1))?.PagingInfo?.TotalCountItems;

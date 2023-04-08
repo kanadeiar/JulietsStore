@@ -42,4 +42,10 @@ public class CartController : Controller
         }
         return RedirectToAction("Index", "Cart", new { returnUrl = returnUrl });
     }
+    [HttpPost]
+    public IActionResult Clear(string? returnUrl)
+    {
+        _cart.Clear();
+        return RedirectToAction("Index", "Cart", new { returnUrl = returnUrl });
+    }
 }
