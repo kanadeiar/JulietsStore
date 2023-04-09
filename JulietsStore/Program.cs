@@ -1,18 +1,17 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.ConfigureServices(x => 
-{
-    x.AddDbContext<JulietsStoreDbContext>(options => {
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    });
-    x.AddControllersWithViews();
-    x.AddRazorPages();
-    x.AddDistributedMemoryCache();
-    x.AddSession();
-    builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
-    builder.Services.AddScoped<ICart>(x => SessionCart.GetCart(x));
-    builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddDbContext<JulietsStoreDbContext>(options => {
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
+builder.Services.AddScoped<IOrderRepo, OrdersRepo>();
+builder.Services.AddScoped<ICart>(x => SessionCart.GetCart(x));
+
 
 var app = builder.Build();
 

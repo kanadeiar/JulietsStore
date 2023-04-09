@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Using Include="System.ComponentModel.DataAnnotations.Schema" />
+    <Using Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
 
 </Project>
