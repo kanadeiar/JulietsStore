@@ -7,9 +7,11 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
-builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
-builder.Services.AddScoped<ICart>(x => SessionCart.GetCart(x));
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
+builder.Services.AddScoped<IOrderRepo, OrdersRepo>();
+builder.Services.AddScoped<ICart>(x => SessionCart.GetCart(x));
+
 
 var app = builder.Build();
 

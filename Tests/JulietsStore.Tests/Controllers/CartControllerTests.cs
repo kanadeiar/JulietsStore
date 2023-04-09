@@ -21,6 +21,7 @@ public class CartControllerTests
         Assert.Equal(2, model?.Cart?.Lines.Count());
         Assert.Equal("myUrl", model?.ReturnUrl);
     }
+
     [Fact]
     public void Add_CanAddItem_ShouldOk()
     {
@@ -37,6 +38,7 @@ public class CartControllerTests
         Assert.Equal("P1", testCart.Lines.FirstOrDefault().Product.Name);
         Assert.Equal(1, testCart.Lines.FirstOrDefault().Quantity);
     }
+
     [Fact]
     public void Remove_CanDeleteItem_ShouldOk()
     {
@@ -57,6 +59,7 @@ public class CartControllerTests
         Assert.Equal("P2", testCart.Lines.First().Product.Name);
         Assert.Equal(1, testCart.Lines.First().Quantity);
     }
+
     [Fact]
     public void Clear_CanClearItems_ShouldOk()
     {
