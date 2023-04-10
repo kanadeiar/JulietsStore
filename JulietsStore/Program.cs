@@ -25,7 +25,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
 builder.Services.AddScoped<IOrderRepo, OrdersRepo>();
 builder.Services.AddScoped<ICart>(x => SessionCart.GetCart(x));
-
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -38,6 +38,8 @@ app.UseSession();
 app.UseRouting();
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
+app.MapBlazorHub();
+app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
 await SeedData.EnsurePopulated(app);
 
