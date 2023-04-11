@@ -1,0 +1,76 @@
+﻿@page "/admin/products/create"
+@page "/admin/products/edit/{id:int}"
+@inherits OwningComponentBase<IProductsRepo>
+@inject NavigationManager NavManager
+
+<style>
+    div.validation-message { color: rgb(220, 53, 69); font-weight: 500; }
+</style>
+
+<h3 class="bg-@ThemeColor text-white text-center p-1">@TitleText Товар</h3>
+<EditForm Model="Product" OnValidSubmit="SaveProduct">
+    <DataAnnotationsValidator />
+    @if (Product.Id != default)
+    {
+        <div class="form-group">
+            <label>Id</label>
+            <input class="form-control" disabled value="@Product.Id"/>
+        </div>
+    }
+    <div class="form-group">
+        <label>Название</label>
+        <ValidationMessage For="@(() => Product.Name)" />
+        <InputText class="form-control" @bind-Value="Product.Name" />
+    </div>
+    <div class="form-group">
+        <label>Описание</label>
+        <ValidationMessage For="@(() => Product.Description)" />
+        <InputText class="form-control" @bind-Value="Product.Description" />
+    </div>
+    <div class="form-group">
+        <label>Категория</label>
+        <ValidationMessage For="@(() => Product.Category)" />
+        <InputText class="form-control" @bind-Value="Product.Category" />
+    </div>
+    <div class="form-group">
+        <label>Цена</label>
+        <ValidationMessage For="@(() => Product.Price)" />
+        <InputNumber class="form-control" @bind-Value="Product.Price" />
+    </div>
+    
+    <div>
+        <button type="submit" class="btn btn-@ThemeColor">Сохранить</button>
+        <NavLink class="btn btn-secondary" href="/admin/products">Отмена</NavLink>
+    </div>
+
+</EditForm>
+
+@code
+{
+    public IProductsRepo Repo => Service;
+    [Parameter]
+    public int Id { get; set; }
+    public Product Product { get; set; } = new();
+    protected override async Task OnParametersSetAsync()
+    {
+        if (Id != 0)
+        {
+            Product = await Repo.Products.FirstOrDefaultAsync(x => x.Id == Id) ?? new();
+        }
+    }
+    public void SaveProduct()
+    {
+        if (Id == 0)
+        {
+            Repo.CreateProduct(Product);
+        }
+        else
+        {
+            Repo.UpdateProduct(Product);
+        }
+        NavManager.NavigateTo("/admin/products");
+    }
+    public string ThemeColor => Id == 0 ? "primary" : "warning";
+    public string TitleText => Id == 0 ? "Создать" : "Редактировать";
+}
+
