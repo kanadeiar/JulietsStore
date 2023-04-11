@@ -1,4 +1,67 @@
 ﻿@page "/admin"
 @page "/admin/products"
+@inherits OwningComponentBase<IProductsRepo>
 
-<h4>Товары</h4>
+<table class="table table-sm table-striped table-bordered">
+    <thead>
+    <tr><th>Id</th><th>Имя</th><th>Категория</th><th>Цена</th></tr>
+    </thead>
+    <tbody>
+    @if (ProductsData?.Count() > 0)
+    {
+        @foreach (var p in ProductsData)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Category</td>
+                <td>@p.Price.ToString("c")</td>
+                <td>
+                    <NavLink class="btn btn-info btn-sm" 
+                             href="@GetDetailsUrl(p.Id)">
+                        Просмотр
+                    </NavLink>
+                    <NavLink class="btn btn-warning btn-sm"
+                             href="@GetEditUrl(p.Id)">
+                        Редактировать
+                    </NavLink>
+                    <button class="btn btn-danger btn-sm" @onclick="@(e => DeleteProduct(p))">
+                        Удалить
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="5" class="text-center">Нет товаров</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<NavLink class="btn btn-primary" href="/admin/products/create">
+    Создать
+</NavLink>
+
+@code
+{
+    public IProductsRepo Repo => Service;
+    public IEnumerable<Product> ProductsData { get; set; } = Enumerable.Empty<Product>();
+    protected async override Task OnInitializedAsync()
+    {
+        await UpdateData();
+    }
+    public async Task UpdateData()
+    {
+        ProductsData = await Repo.Products.ToListAsync();
+    }
+    public async Task DeleteProduct(Product p)
+    {
+        Repo.DeleteProduct(p);
+        await UpdateData();
+    }
+    public string GetDetailsUrl(int id) => $"/admin/products/details/{id}";
+    public string GetEditUrl(int id) => $"/admin/products/edit/{id}";
+}

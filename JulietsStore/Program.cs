@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var databaseName = builder.Configuration["Database"];
@@ -26,16 +28,26 @@ builder.Services.AddScoped<IProductsRepo, ProductsRepo>();
 builder.Services.AddScoped<IOrderRepo, OrdersRepo>();
 builder.Services.AddScoped<ICart>(x => SessionCart.GetCart(x));
 builder.Services.AddServerSideBlazor();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<JulietsStoreDbContext>();
 
 var app = builder.Build();
 
-app.UseDeveloperExceptionPage();
-app.UseStatusCodePages();
+if (app.Environment.IsProduction())
+{
+    app.UseExceptionHandler("/error");
+}
+else
+{
+    app.UseDeveloperExceptionPage();
+    app.UseStatusCodePages();
+}
 
 app.UseStaticFiles();
-
 app.UseSession();
 app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapDefaultControllerRoute();
 app.MapRazorPages();
 app.MapBlazorHub();
