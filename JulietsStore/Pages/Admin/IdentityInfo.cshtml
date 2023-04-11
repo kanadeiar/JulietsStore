@@ -1,0 +1,28 @@
+﻿@page
+@model IdenittyInfoModel
+
+<h3 class="bg-primary text-white text-center p-2">Пользователь - Администратор</h3>
+<table class="table table-sm table-striped table-bordered">
+    <tbody>
+    <tr><th>Пользователь</th><td>@Model.AdminUser.UserName</td></tr>
+    <tr><th>Email</th><td>@Model.AdminUser.Email</td></tr>
+    <tr><th>Телефон</th><td>@Model.AdminUser.PhoneNumber</td></tr>
+    </tbody>
+</table>
+
+@functions {
+    [Authorize]
+    public class IdenittyInfoModel : PageModel
+    {
+        private readonly UserManager<IdentityUser> _userManager;
+        public IdenittyInfoModel(UserManager<IdentityUser> mgr)
+        {
+            _userManager = mgr;
+        }
+        public IdentityUser AdminUser { get; set; } = new();
+        public async Task OnGetAsync()
+        {
+            AdminUser = await _userManager.FindByNameAsync("admin") ?? new();
+        }
+    }
+}
