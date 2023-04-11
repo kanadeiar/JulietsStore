@@ -2,7 +2,7 @@
 
 namespace JulietsStore.Infra.Data;
 
-public class JulietsStoreDbContext : DbContext
+public class JulietsStoreDbContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Product> Products => Set<Product>();
     public DbSet<Order> Orders => Set<Order>();
