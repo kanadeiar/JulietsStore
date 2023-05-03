@@ -1,4 +1,4 @@
-namespace JulietsStore.Tests;
+﻿namespace JulietsStore.Tests;
 
 public class UnitTest
 {

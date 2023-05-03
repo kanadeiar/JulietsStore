@@ -1,30 +1,32 @@
-namespace JulietsStore.Controllers;
+﻿using JulietsStore.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
-public class HomeController : Controller
+namespace JulietsStore.Controllers
 {
-    private readonly IProductsRepo _repo;
-    private int pageSize = 4;
-    public HomeController(IProductsRepo repo)
+    public class HomeController : Controller
     {
-        _repo = repo;
-    }
-    public IActionResult Index(string? category, int productPage = 1)
-    {
-        var products = _repo.Products
-            .Where(x => category == null || x.Category == category)
-            .OrderBy(x => x.Id);
-        var model = new ProductsListViewModel
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
         {
-            Products = products
-                .Skip((productPage - 1) * pageSize)
-                .Take(pageSize).ToArray(),
-            PagingInfo = new PagingInfoViewModel {
-                CurrentPage = productPage,
-                ItemsPerPage = pageSize,
-                TotalCountItems = products.Count(),
-            },
-            CurrentCategory = category,
-        };
-        return View(model);
+            _logger = logger;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }
