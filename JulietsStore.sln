@@ -5,9 +5,30 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2767FCEF-399F-4000-9ABA-07D0A36AC848}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JulietsStore", "JulietsStore\JulietsStore.csproj", "{DB5EEFA3-5A25-4BB7-92D4-7232678D57EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JulietsStore.Tests", "Tests\JulietsStore.Tests\JulietsStore.Tests.csproj", "{E96F6A09-131C-4D06-B46D-F27FBEF91254}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB5EEFA3-5A25-4BB7-92D4-7232678D57EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5EEFA3-5A25-4BB7-92D4-7232678D57EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5EEFA3-5A25-4BB7-92D4-7232678D57EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5EEFA3-5A25-4BB7-92D4-7232678D57EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E96F6A09-131C-4D06-B46D-F27FBEF91254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E96F6A09-131C-4D06-B46D-F27FBEF91254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E96F6A09-131C-4D06-B46D-F27FBEF91254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E96F6A09-131C-4D06-B46D-F27FBEF91254}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E96F6A09-131C-4D06-B46D-F27FBEF91254} = {2767FCEF-399F-4000-9ABA-07D0A36AC848}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {79096C96-060A-4B6A-BA37-36460DAE21C8}
