@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Using Include="System.ComponentModel.DataAnnotations" />
+    <Using Include="Microsoft.AspNetCore.Mvc" />
+    <Using Include="System.Diagnostics" />
+  </ItemGroup>
+
 </Project>

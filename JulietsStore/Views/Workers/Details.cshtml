@@ -1,0 +1,18 @@
+﻿@model Worker
+
+<h1>Детальные данные по сотруднику</h1>
+
+<hr />
+@Html.ActionLink("Главная страница", "Index", "Home")
+/ 
+@Html.ActionLink("Все сотрудники магазина", "Index")
+<hr />
+
+<p>Идентификатор: @Model.Id</p>
+<p>Фамилия: @Model.LastName</p>
+<p>Имя: @Model.FirstName</p>
+<p>Отчество: @Model.Patronymic</p>
+<p>Возраст: @Model.Age лет</p>
+<p>Дата рождения: @Model.Birthday</p>
+<p>Дата трудоустройства: @Model.EmploymentDate</p>
+<p>Количество детей: @Model.CountClildren штук</p>

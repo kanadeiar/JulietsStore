@@ -1,8 +1,4 @@
-﻿using JulietsStore.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-namespace JulietsStore.Controllers
+﻿namespace JulietsStore.Controllers
 {
     public class HomeController : Controller
     {
