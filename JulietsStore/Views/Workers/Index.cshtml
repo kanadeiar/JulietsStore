@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Worker>
+
+<h1>Сотрудники магазина</h1>
+
+<hr />
+@Html.ActionLink("Главная страница", "Index", "Home")
+<hr />
+
+<table>
+    <thead>
+    <tr>
+        <th>№</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Отчество</th>
+        <th>Возраст</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var worker in Model)
+    {
+        <tr>
+            <td>@worker.Id</td>
+            <td>@worker.LastName</td>
+            <td>@worker.FirstName</td>
+            <td>@worker.Patronymic</td>
+            <td>@worker.Age</td>
+            <th>
+                @Html.ActionLink("Детали", "Details", "Workers", new { id = worker.Id })
+            </th>
+        </tr>
+    }
+    </tbody>
+</table>
