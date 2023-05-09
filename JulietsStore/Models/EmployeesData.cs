@@ -2,7 +2,7 @@
 
 public class EmployeesData
 {
-    public static List<Worker> GetWorkers => Enumerable.Range(1, 10).Select(p => new Worker
+    public static List<Worker> GetWorkers => Enumerable.Range(1, 100).Select(p => new Worker
     {
         Id = p,
         FirstName = $"Иван_{p}",
