@@ -12,4 +12,8 @@
     <Using Include="System.Diagnostics" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Base\" />
+  </ItemGroup>
+
 </Project>
