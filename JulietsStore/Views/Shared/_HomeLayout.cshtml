@@ -3,22 +3,13 @@
 <html lang="ru-ru">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <partial name="Partial/_MetaPartial" />
 
     <title>@ViewData["Title"] - JulietsStore</title>
 
-    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="~/css/main.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/css/style.css" rel="stylesheet" asp-append-version="true" />
-    <link href="~/JulietsStore.styles.css" rel="stylesheet" asp-append-version="true" />
+    <partial name="Partial/_StylesPartial" />
 
     @await RenderSectionAsync("Styles", false)
-
-    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="~/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" href="~/favicon.png" sizes="500x500">
 
     <base href="~/" />
 </head>
@@ -35,104 +26,11 @@
                 </div>
                 <div class="col-lg-9">
 
-                    <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                        <a href="" class="text-decoration-none d-block d-lg-none">
-                            <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">Juliets</span>Shop.ru</h1>
-                        </a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between">
-                            <partial name="Partial/_MainMenuPartial" />
-
-                            <div class="navbar-nav ml-auto py-0">
-                                <a href="" class="nav-item nav-link">Вход</a>
-                                <a href="" class="nav-item nav-link">Регистрация</a>
-                            </div>
-                        </div>
-                    </nav>
+                    <partial name="Partial/_NavbarPartial" />
 
                     <partial name="Partial/_NavbarCarouselPartial" />
 
-                    <!-- Products Start -->
-                    <div class="pt-5">
-                        <div class="text-center mb-4">
-                            <h2 class="section-title px-5"><span class="px-2">Горячие товары</span></h2>
-                        </div>
-                        <div class="row pb-3">
-                            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Просмотр</a>
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Добавить в корзину</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                                <div class="card product-item border-0 mb-4">
-                                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                        <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
-                                    </div>
-                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                                        <div class="d-flex justify-content-center">
-                                            <h6>$123.00</h6><h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                                        </div>
-                                    </div>
-                                    <div class="card-footer d-flex justify-content-between bg-light border">
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Products End -->
-
+                    <partial name="Partial/_ProductsPartial"/>
                 </div>
             </div>
         </div>
@@ -154,9 +52,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/main.js" asp-append-version="true"></script>
+    <partial name="Partial/_ScriptsPartial" />
 
     @await RenderSectionAsync("Scripts", required: false)
 
